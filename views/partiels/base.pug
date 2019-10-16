@@ -11,7 +11,7 @@ html
         link(ref='shortcut icon' type='image/png' href='/img/favicon.png')
         link(rel='stylesheet', href='/css/style.css', type='text/css')
 
-    body
+    body(data-alert=`${alert ? alert : ''}`)
         include _header
 
         block content

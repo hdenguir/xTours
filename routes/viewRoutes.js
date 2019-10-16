@@ -6,6 +6,7 @@ const bookingCtrl = require('./../controllers/bookingController');
 const viewRouter = express.Router();
 
 //viewRouter.use(authCtrl.isLoggedIn);
+viewRouter.use(viewsCtrl.alerts);
 
 viewRouter.get('/', authCtrl.isLoggedIn, viewsCtrl.getOverview);
 viewRouter.get(
