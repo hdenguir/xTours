@@ -4,7 +4,6 @@ const crypto = require('crypto');
 const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('../utils/appError');
-const { log } = require('./../utils/utils');
 const { promisify } = require('util');
 const Email = require('./../utils/email');
 
@@ -252,7 +251,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 });
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
-  log('CONTROLLER UPDATE PASSWORD');
   // 1. Get the user from the collection
   const user = await User.findById(req.user.id).select('+password');
 

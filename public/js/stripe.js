@@ -3,7 +3,6 @@ import axios from 'axios';
 import { showAlert } from './alerts';
 
 export const bookTour = async tourId => {
-  console.log('Tour ID : ', tourId);
   try {
     const stripe = Stripe(
       'pk_test_LufmhvPFMvNt6LTFyvoBOz2r00sg64QpZL',
@@ -12,7 +11,6 @@ export const bookTour = async tourId => {
     const session = await axios(
       `/api/v1/bookings/checkout-session/${tourId}`,
     );
-    console.log(session);
 
     // 2) Create checkout form + chanre credit card
 
@@ -20,7 +18,6 @@ export const bookTour = async tourId => {
       sessionId: session.data.session.id,
     });
   } catch (err) {
-    console.log(err);
     showAlert('error', err);
   }
 };
