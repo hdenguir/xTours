@@ -7,12 +7,7 @@ const viewRouter = express.Router();
 
 //viewRouter.use(authCtrl.isLoggedIn);
 
-viewRouter.get(
-  '/',
-  bookingCtrl.createBookingCheckout,
-  authCtrl.isLoggedIn,
-  viewsCtrl.getOverview,
-);
+viewRouter.get('/', authCtrl.isLoggedIn, viewsCtrl.getOverview);
 viewRouter.get(
   '/tours/:slug',
   authCtrl.isLoggedIn,
