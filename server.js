@@ -3,14 +3,6 @@ const dotenv = require('dotenv');
 
 const { log } = require('./utils/utils');
 
-process.on('unhandledRejection', err => {
-  process.exit(1);
-});
-
-process.on('uncaughtException', err => {
-  process.exit(1);
-});
-
 dotenv.config({ path: './config.env' });
 
 const app = require('./app');
@@ -31,3 +23,21 @@ mongoose.connect(DB, {
 
 const port = process.env.PORT || 3300;
 const server = app.listen(port, () => {});
+
+process.on('unhandledRejection', err => {
+  console.log('UNHANDLEDREJECTION');
+  process.exit(1);
+});
+
+process.on('uncaughtException', err => {
+  console.log('UNCAUGHTEXCEPTION');
+  process.exit(1);
+});
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM RECIEVED. Shutting down gracefully');
+  server.close(() => {
+    console.log('🚒 Process terminated!');
+    //process.exit(1);
+  });
+});
