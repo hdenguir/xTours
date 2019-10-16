@@ -4,7 +4,7 @@
   "description": "Learning NodeJS, Express, MongoDB",
   "main": "app.js",
   "scripts": {
-    "start:dev": "sudo nodemon server.js --inspect",
+    "start:dev": "node server.js",
     "start:prod": "sudo NODE_ENV=production PORT=80 nodemon server.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
